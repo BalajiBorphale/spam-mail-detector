@@ -3,6 +3,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import CountVectorizer
 import re
 import glob
+from joblib import dump
 
 class SpamDetector:
     def __init__(self):
@@ -31,7 +32,8 @@ class SpamDetector:
             else:
                 # Transform the text for subsequent chunks using the already fitted vectorizer
                 X_vectorized = self.vectorizer.transform(X)
-                self.model.partial_fit(X_vectorized, y, classes=[0, 1])  # Specify classes explicitly
+                # Remove the hardcoded classes argument from partial_fit
+                self.model.partial_fit(X_vectorized, y)
 
     def clean_text(self, text):
         # Simple text cleaning
@@ -44,3 +46,16 @@ class SpamDetector:
         cleaned_text = self.clean_text(text)  # Clean the input text
         vect_text = self.vectorizer.transform([cleaned_text])  # Transform the text
         return self.model.predict(vect_text)[0]
+
+
+if __name__ == "__main__":
+    #Create an instance of your detector class
+    detector = SpamDetector()
+
+    detector.train(data_path_pattern='spam.csv')
+
+
+    print("Saving model and vectorizer...")
+    dump(detector.model, 'model.pkl')
+    dump(detector.vectorizer, 'vectorizer.pkl')
+    print("Files saved successfully.")
