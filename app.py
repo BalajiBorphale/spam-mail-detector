@@ -13,7 +13,7 @@ detector.train('dataset_chunks/spam_email_dataset_*.csv')  # Load all chunked fi
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
-    email_content = data['email']
+    email_content = data['text']
     prediction = detector.predict(email_content)
     result = 'Spam' if prediction == 1 else 'Not Spam'
     return jsonify({'result': result})
