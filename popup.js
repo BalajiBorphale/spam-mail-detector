@@ -1,18 +1,18 @@
 document.getElementById('checkSpam').addEventListener('click', function() {
     const emailText = document.getElementById('emailText').value;
 
-    fetch('https://smdetector.onrender.com/predict', {
+    fetch('https://smdetector-e9lm.onrender.com/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: emailText })
+        body: JSON.stringify({ text: emailText })
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('result').innerText = data.result;
+        document.getElementById('result').innerText = data.prediction;
         // Add class based on spam/not spam
-        if (data.result === 'Spam') {
+        if (data.prediction === 'Spam') {
             document.getElementById('result').classList.add('spam');
             document.getElementById('result').classList.remove('not-spam');
         } else {

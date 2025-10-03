@@ -52,8 +52,7 @@ if __name__ == "__main__":
     #Create an instance of your detector class
     detector = SpamDetector()
 
-    detector.train(data_path_pattern='spam.csv')
-
+    detector.train(data_path_pattern='dataset_chunks/spam_email_dataset_*.csv')
 
     print("Saving model and vectorizer...")
     dump(detector.model, 'model.pkl')
