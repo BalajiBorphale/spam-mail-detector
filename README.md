@@ -1,7 +1,9 @@
 # Spam Email Detector Chrome Extension
+**[Live Demo 🚀](https://smdetector-ui.onrender.com/)**
 
 ## Overview
 The **Spam Email Detector** is a Chrome extension that allows users to detect whether an email is spam or not by using a trained machine learning model. The model is hosted on a Flask server deployed via Render and can classify an email as "Spam" or "Not Spam" based on the content.
+
 
 ## Features
 - **Spam Detection**: Quickly determine if an email is spam or not.
