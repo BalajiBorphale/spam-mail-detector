@@ -44,6 +44,7 @@ def predict():
     vect_text = vectorizer.transform([cleaned_text])
     prediction = model.predict(vect_text)[0]
 
+    print(f"Raw model prediction: {prediction}")
     # Use 'spam'/'ham' or similar string labels from your training data
     result = 'Spam' if prediction == 'spam' else 'Not Spam'
 
