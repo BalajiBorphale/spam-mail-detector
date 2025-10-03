@@ -18,7 +18,7 @@ The **Spam Email Detector** is a Chrome extension that allows users to detect wh
 
 1. Clone or download this repository:
    ```bash
-   git clone https://github.com/BalajiBorphale/SMDetector.git
+   git clone https://github.com/BalajiBorphale/spam-mail-detector.git
 
 2. Open Google Chrome and navigate to chrome://extensions/.
 
